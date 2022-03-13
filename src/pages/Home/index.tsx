@@ -1,13 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useLogout } from '../../hooks/useLogout';
 
-import { useAuth } from '../../hooks/useAuth';
 
 export function Home() {
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const logout = useLogout();
 
-  const logout = async () => {
-    setAuth({});
+  const singOut = async () => {
+    logout()
     navigate('/linkpage');
   }
 
@@ -25,7 +25,7 @@ export function Home() {
       <br />
       <Link to="/linkpage">Go to the link page</Link>
       <div className="flexGrow">
-        <button onClick={logout}>Sign Out</button>
+        <button onClick={singOut}>Sign Out</button>
       </div>
     </section>
   );
